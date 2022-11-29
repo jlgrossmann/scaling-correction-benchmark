@@ -4,9 +4,9 @@
 # generate data to try scaling adjustment methods
 # I=4, J=5, K=2
 test_data = list(readings=rep(unlist(sapply(1:10, function(x) 1:5*x, simplify=F)), each=2)+rnorm(100,1), 
-                 assessors=rep(1:10, each=10), 
-                 samples=rep(rep(1:5, 10), each=2), 
-                 replicates=rep(1:2, 50))
+                 assessors=as.factor(rep(1:10, each=10)), 
+                 samples=as.factor(rep(rep(1:5, 10), each=2)), 
+                 replicates=as.factor(rep(1:2, 50)))
 # ten_berge(test_data$readings, test_data$assessors, test_data$samples, test_data$replicates)
 
 
@@ -142,7 +142,7 @@ assessor_mod = function(readings, assessors, samples, replicates){
         SV = (nu_p_est - mean(nu_p_est))/sqrt(sum( (nu_p_est - mean(nu_p_est))^2 ))
         D_V = (t(SV-nu_p)%*%(SV-nu_p))
         nu_p = SV
-        if(!is.numeric(D_V)) return(list(status=F))
+        if(!is.finite(D_V)) return(list(status=F))
         # catch error
     }
     
@@ -214,7 +214,7 @@ scaling_fit_aov = function(sim_dat) {
     
     # Assessor model
     asm = assessor_mod(sim_dat$intensity, sim_dat$assessor, sim_dat$sample, sim_dat$repl)
-    if(asm$status==F) {Test = "NA"; print('error in assessor model'); next}  # error in estimating assessor model: try new permutation
+    if(asm$status==F) {print('error in assessor model'); next}  # error in estimating assessor model: try new permutation
     sim_dat$add = asm$add
     sim_dat$mult = asm$mult
 

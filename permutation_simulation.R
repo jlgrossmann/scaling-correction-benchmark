@@ -1,6 +1,6 @@
 # supplementary R code to accompany
 # JL Großmann et al: "Critical evaluation of assessor difference correction approaches in sensory analysis"
-# the following code is intented to illustrate the scaing correction, model fitting, permutation and 
+# the following code is intented to illustrate the scaling correction, model fitting, permutation and 
 # simulation strategies employed in the aforementioned paper 
 
 # helper_functions.R contains functions for scaling correction and model fitting
@@ -25,7 +25,7 @@ library(getopt)  # argument parsing
 # strategy to employ to obtain null distributions
 mode. = 'permutation'  # options: 'permutation' - will permute selected attribute of cheese dataset
                        #          'simulation' - will generate random data 
-n_sim = 1e2  # Number of permutation / simulation iterations
+n_sim = 1e4  # Number of permutation / simulation iterations
 
 # for permutation
 perm_type = 'ass'  # how to permute 
