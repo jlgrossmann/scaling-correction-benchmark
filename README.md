@@ -1,5 +1,5 @@
 ## scaling-correction-benchmark
-This repository contains code and data to accopany JL Großmann et al: "Critical evaluation of assessor difference correction approaches in sensory analysis". 
+This repository contains code and data to accompany [JL Großmann et al: "Critical evaluation of assessor difference correction approaches in sensory analysis"](https://doi.org/10.1016/j.foodqual.2022.104792). 
 The repository is intented to illustrate the scaling correction, model fitting, permutation and simulation strategies employed in the aforementioned paper.
 
 ### `permutation_simulation.R`
